@@ -1,4 +1,4 @@
-# import invertedstar
+import invertedstar
 
 def test_invertedstar_5(capsys):
     invertedstar.invertedstar(5)
