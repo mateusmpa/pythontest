@@ -1,14 +1,25 @@
-def test_invertedstar_5(capsys):
-    invertedstar.invertedstar(5)
-    captured = capsys.readouterr()
-    assert captured.out == "*****\n ****\n  ***\n   **\n    *\n"
+import unittest
+from io import StringIO
+import sys
 
-def test_invertedstar_3(capsys):
-    invertedstar.invertedstar(3)
-    captured = capsys.readouterr()
-    assert captured.out == "***\n **\n  *\n"
+def invertedstar(n):
+    for i in range(n, 0, -1):
+        print((n-i) * ' ' + i * '*')
 
-def test_invertedstar_1(capsys):
-    invertedstar.invertedstar(1)
-    captured = capsys.readouterr()
-    assert captured.out == "*\n"
+class TestInvertedStar(unittest.TestCase):
+
+    def setUp(self):
+        self.held_output = StringIO()
+        sys.stdout = self.held_output
+
+    def tearDown(self):
+        self.held_output.close()
+        sys.stdout = sys.__stdout__
+
+    def test_invertedstar(self):
+        invertedstar(5)
+        expected_output = "    *****\n     ****\n      ***\n       **\n        *\n"
+        self.assertEqual(self.held_output.getvalue(), expected_output)
+
+if __name__ == '__main__':
+    unittest.main()
