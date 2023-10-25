@@ -1,5 +1,3 @@
-# test_invertedstar.py
-
 def test_invertedstar_5(capsys):
     invertedstar.invertedstar(5)
     captured = capsys.readouterr()
