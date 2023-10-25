@@ -1,3 +1,5 @@
+# test_invertedstar.py
+
 import invertedstar
 
 def test_invertedstar_5(capsys):
