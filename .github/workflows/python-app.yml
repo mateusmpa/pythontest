@@ -126,13 +126,13 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
           # Adicionar SSH key ao known hosts
-          ssh-keyscan 4.228.90.134 >> ~/.ssh/known_hosts
+          ssh-keyscan 20.197.192.95 >> ~/.ssh/known_hosts
 
           # Copiar artefato para o servidor
-          scp -r * senac@4.228.90.134:/app/data/
+          scp -r * senac@20.197.192.95:/app/data/
 
           # Conceder permissões de execução ao script no servidor
-          ssh senac@4.228.90.134 "chmod +x /app/data/start_server.sh"
+          ssh senac@20.197.192.95 "chmod +x /app/data/start_server.sh"
 
           # Executar server.py no servidor
-          ssh senac@4.228.90.134 "/app/data/start_server.sh"
+          ssh senac@20.197.192.95 "/app/data/start_server.sh"
