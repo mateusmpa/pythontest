@@ -125,11 +125,10 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-          # Add SSH key to known hosts
+          # Adicionar SSH key ao known hosts
           ssh-keyscan 4.228.90.134 >> ~/.ssh/known_hosts
 
-          # Copy artifact to server
-          ssh senac@4.228.90.134 "mkdir -p /app/data  "
+          # Copiar artefato para o servidor
           scp -r * senac@4.228.90.134:/app/data/
 
           # Conceder permissões de execução ao script no servidor
