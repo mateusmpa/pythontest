@@ -1,6 +1,6 @@
+# Importando o módulo http.server
 import http.server
 import socketserver
-import time
 
 # Configurando o diretório raiz do servidor
 diretorio_raiz = '.'  # Pode ser alterado para o diretório desejado
@@ -13,10 +13,7 @@ manipulador = http.server.SimpleHTTPRequestHandler
 
 # Configurando o servidor
 with socketserver.TCPServer(("", porta), manipulador) as httpd:
-    print(f"Servidor iniciado na porta {porta}")
+  print(f"Servidor iniciado na porta {porta}")
 
-    # Aguarde alguns segundos antes de finalizar
-    time.sleep(5)
-
-# O servidor será encerrado após o temporizador
-print("Servidor encerrado.")
+  # Mantendo o servidor ativo
+  httpd.serve_forever()

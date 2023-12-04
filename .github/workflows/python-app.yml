@@ -36,7 +36,7 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
-      - run: mkdir staging && cp *.py staging
+      - run: mkdir staging && cp *.{py,sh} staging
       - name: Create artifact
         uses: actions/upload-artifact@v3
         with:
@@ -132,5 +132,8 @@ jobs:
           ssh senac@4.228.90.134 "mkdir -p /app/data  "
           scp -r * senac@4.228.90.134:/app/data/
 
+          # Conceder permissões de execução ao script no servidor
+          ssh senac@4.228.90.134 "chmod +x /app/data/start_server.sh"
+
           # Executar server.py no servidor
-          ssh senac@4.228.90.134 "cd /app/data && python3 server.py"
+          ssh senac@4.228.90.134 "/app/data/start_server.sh"
