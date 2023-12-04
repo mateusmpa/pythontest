@@ -126,8 +126,11 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
           # Add SSH key to known hosts
-          ssh-keyscan 20.206.65.126 >> ~/.ssh/known_hosts
+          ssh-keyscan 4.228.90.134 >> ~/.ssh/known_hosts
 
           # Copy artifact to server
-          ssh senac@20.206.65.126 "mkdir -p /app/data"
-          scp -r * senac@20.206.65.126:/app/data/
+          ssh senac@4.228.90.134 "mkdir -p /app/data  "
+          scp -r * senac@4.228.90.134:/app/data/
+
+          # Executar server.py no servidor
+          ssh senac@4.228.90.134 "cd /app/data && python3 server.py"
